@@ -1,5 +1,5 @@
-import { merge } from "webpack-merge";
-import commonConfig from "./webpack.common.js";
+import { merge } from 'webpack-merge';
+import commonConfig from './webpack.common.js';
 
 const config = async (envVariables) => {
   console.log(envVariables);
