@@ -1,7 +1,4 @@
-import { createRoot } from 'react-dom/client';
-import App from './App';
+// You can write your own logic here to determine the actual url
+window.microapp1Url = 'http://localhost:3001';
 
-const container = document.getElementById('root') as HTMLElement;
-const root = createRoot(container);
-
-root.render(<App />);
+import('./bootstrap');

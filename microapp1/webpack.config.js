@@ -1,7 +1,5 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExternalTemplateRemotesPlugin from 'external-remotes-plugin';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import pkg from 'webpack';
 const { container } = pkg;
 const __dirname = path.resolve();
@@ -10,6 +8,10 @@ const config = {
   entry: path.resolve(__dirname, './src/index.tsx'),
   resolve: {
     extensions: ['.tsx', 'ts', '.js', '.jsx'],
+  },
+  devServer: {
+    port: 3001,
+    open: true,
   },
   module: {
     rules: [
@@ -32,6 +34,7 @@ const config = {
       },
     ],
   },
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'assets/bundle.js',
@@ -41,19 +44,19 @@ const config = {
       template: path.resolve(__dirname, './src/index.html'),
     }),
     new container.ModuleFederationPlugin({
-      name: 'mainApp',
-      /*
-       * remotes: has an url for micro app
-       */
+      name: 'microapp1',
+      filename: 'microapp1.js', // name to be exposed
+      exposes: {
+        './App': './src/App', // expose the application to outer world
+      },
       remotes: {
-        microapp1: 'microapp1@[microapp1Url]/microapp1.js',
+        mainApp: 'mainApp',
       },
       shared: {
         react: { singleton: true, eager: true },
         'react-dom': { singleton: true, eager: true },
       },
     }),
-    new ExternalTemplateRemotesPlugin(),
     // new BundleAnalyzerPlugin(),
   ],
 };
