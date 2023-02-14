@@ -1,4 +1,8 @@
 // You can write your own logic here to determine the actual url
-window.microapp1Url = 'http://localhost:3001';
+// You can put your production url there
+window.microapp1Url =
+  process.env.environment === 'production'
+    ? 'http://127.0.0.1:5500/microapp1/build/'
+    : 'http://localhost:3001';
 
 import('./bootstrap');

@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExternalTemplateRemotesPlugin from 'external-remotes-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import pckJson from '../package.json' assert { type: "json" };
 import pkg from 'webpack';
 const { container } = pkg;
 const __dirname = path.resolve();
@@ -49,8 +50,9 @@ const config = {
         microapp1: 'microapp1@[microapp1Url]/microapp1.js',
       },
       shared: {
-        react: { singleton: true, eager: true },
-        'react-dom': { singleton: true, eager: true },
+        ...pckJson.dependencies,
+        react: { singleton: true,  requiredVersion: pckJson.dependencies['react'] },
+        'react-dom': { singleton: true,  requiredVersion: pckJson.dependencies['react-dom']},
       },
     }),
     new ExternalTemplateRemotesPlugin(),

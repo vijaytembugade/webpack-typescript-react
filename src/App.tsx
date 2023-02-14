@@ -1,9 +1,7 @@
 import { useState, Suspense, lazy } from 'react';
 import './styles.css';
-
-const Counter = lazy(() => delayForDemo(import('./Components/Counter')));
+import Counter from './Components/Counter';
 const RemoteApp = lazy(() => import('microapp1/App'));
-
 const App = () => {
   const [showCounter, setShowCounter] = useState(false);
   return (
@@ -16,12 +14,9 @@ const App = () => {
       </div>
       {showCounter && (
         <Suspense fallback={<>Loading... </>}>
-          <Counter />
-        </Suspense>
-      )}
-      {showCounter && (
-        <Suspense fallback={<>Loading... </>}>
-          <RemoteApp />
+          <RemoteApp>
+            <Counter />
+          </RemoteApp>
         </Suspense>
       )}
     </h2>
@@ -30,8 +25,11 @@ const App = () => {
 
 export default App;
 
-function delayForDemo(promise) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  }).then(() => promise);
-}
+/**
+ * We can use this function to delay load the component just for development use and testing.
+ */
+// function delayForDemo(promise) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, 2000);
+//   }).then(() => promise);
+// }

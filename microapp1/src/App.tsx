@@ -1,7 +1,16 @@
 import React from 'react';
 
-const App = () => {
-  return <div>Module Federation : MicroApp 1</div>;
+const App = (props) => {
+  const { children } = props;
+  return <div>
+    <p>
+      Module Federation : MicroApp 1
+    </p>
+    <p>
+      Environment: {process.env.environment}
+    </p>
+    {children}
+  </div>;
 };
 
 export default App;
