@@ -1,4 +1,4 @@
-# webpack, typescript and react template with Module Federation
+# Webpack, typescript and react template with Module federation
 
 This repository consist complete webpack and typescript setup for react application. Also included Module federation part including one micro-app build with webpack(react).
 
