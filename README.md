@@ -1,6 +1,6 @@
 # webpack, typescript and react template with Module Federation
 
-This reporsitory consist of complete webpack and typescript setup for react application. Also explored Module federation part inclucing one micro app build with webpack(react).
+This repository consist complete webpack and typescript setup for react application. Also included Module federation part including one micro-app build with webpack(react).
 
 ## Files and Folder
 
@@ -12,10 +12,12 @@ This reporsitory consist of complete webpack and typescript setup for react appl
 - .babelrc : This file content the babel configuration of for converting ES6 code to backword compatible code of javascript.
 - .eslintrc : file configure for linting
 - .prettierrc: file containing configuration for formatting with prettier.
+- microapp1 : it is one different react application which can be integrated with main application with MF.
+- src : it is source folder for main application.  
 
 ### NOTE:
 
-webpack.config files are written in ES6 syntax instead of ES5. For that I have updated package.json file.
+webpack.config files are written in ES6 syntax instead of ES5. For that I have updated package.json file, with `type: module` property.
 
 ### Module Federation Plugin:
 
